@@ -2,11 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-using namespace std;
 
 bool compWin = false;
-
-
 
 bool checkWin(char board[][3], bool& compWin)
 {
@@ -55,16 +52,16 @@ bool checkWin(char board[][3], bool& compWin)
 }
 void printBoard(char board[][3])       //This function prints the board.
 {
-    cout << endl;
+    std::cout << std::endl;
     for (int row = 0; row <= 2; row++)
     {
         for (int col = 0; col <= 2; col++)
         {
-            cout << board[row][col];
+            std::cout << board[row][col];
         }
-        cout << endl;
+        std::cout << std::endl;
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
 bool checkTie(char board[][3])       //This function checks tie.
@@ -181,12 +178,12 @@ int main()
 
             if (checkWin(board, compWin)) //The if statement checks if the computer won and breaks out
             {
-                cout << "computer wins \n ";
+                std::cout << "computer wins \n ";
                 break;
             };
             if (checkTie(board))
             {
-                cout << "There is a tie \n";
+                std::cout << "There is a tie \n";
                 break;
             };
 
@@ -195,26 +192,26 @@ int main()
                 repeat = 1;
                 while (repeat == 1) //check legal inputs
                 {
-                    cout << "What row (0, 1, or 2) would you like to place your X in?" << endl;
-                    cin >> rowO;
-                    cout << "What column (0, 1, or 2) would you like to place your X in?" << endl;
-                    cin >> colO;
+                    std::cout << "What row (0, 1, or 2) would you like to place your X in?" << std::endl;
+                    std::cin >> rowO;
+                    std::cout << "What column (0, 1, or 2) would you like to place your X in?" << std::endl;
+                    std::cin >> colO;
                     if (board[rowO][colO] == 'X')
                     {
                         repeat = 1;
-                        cout << "That spot is already taken. Please choose another row and column."
-                            << endl;
+                        std::cout << "That spot is already taken. Please choose another row and column."
+                            << std::endl;
                     }
                     else if (board[rowO][colO] == 'O')
                     {
                         repeat = 1;
-                        cout << "That spot is already taken. Please choose another row and column."
-                            << endl;
+                        std::cout << "That spot is already taken. Please choose another row and column."
+                            << std::endl;
                     }
                     else if (rowO > 2 || colO > 2 || rowO < 0 || colO < 0)
                     {
                         repeat = 1;
-                        cout << "You must choose either 0, 1, or 2. Please enter another row and column." << endl;
+                        std::cout << "You must choose either 0, 1, or 2. Please enter another row and column." << std::endl;
 
                     }
                     else
@@ -232,24 +229,24 @@ int main()
                     printBoard(board);
                     if (!compWin)
                     {
-                        cout << "You win " << endl;          //This checks if the player has won.
+                        std::cout << "You win " << std::endl;          //This checks if the player has won.
                         break;
                     }
                     else
                     {
-                        cout << "You lost " << endl;          //This checks if the computer has won.
+                        std::cout << "You lost " << std::endl;          //This checks if the computer has won.
                         break;
                     }
                 }
                 if (checkTie(board)) {
-                    cout << "There is a tie " << endl;
+                    std::cout << "There is a tie " << std::endl;
                     break;
                 }
             } //end of user play
         } //end of while(true)
 
-        cout << "Do you want to play again? (Y/N)?" << endl;;
-        cin >> keepPlaying;
+        std::cout << "Do you want to play again? (Y/N)?" << std::endl;;
+        std::cin >> keepPlaying;
 
     } while (keepPlaying == 'Y');
 
